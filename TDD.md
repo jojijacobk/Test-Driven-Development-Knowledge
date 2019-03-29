@@ -33,3 +33,16 @@ For example on E2E, let's assume how E2E of mail application would look like:
 7. Send mail
 8. etc
 9. Log out of mail account
+
+# Unit Tests
+## How To write Unit Tests to drive TDD
+
+In TDD, unit tests are driven through 3 stages in the following strategy.
+
+**RED:** Just specify one of small requirement using a unit test which of course fails because the code is not yet written.
+
+**GREEN:** Write the code just enough to make the above unit test as green. You may do hard coding or at worst do coding just enough with the aim to pass the above test. The prime goal in this step is to write code in smallest possible time not more than a few minutes.
+
+**REFACTOR:** Then refactor codes to improve quality of codes and and clean them to remove hard coding.
+This ensures to make _"clean code that works"_. _"Clean code"_ is ensured by _refactor stage_. And, _"that works"_ is ensured by _Red to Green_ stage
+
