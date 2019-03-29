@@ -98,3 +98,21 @@ If you need data to be retrieved from DB in order to execute test on a piece of 
 
 #### 5. Dummy
 Dummy data passed to methods.
+
+# Test Based Development Techniques
+
+## Test Driven Development (TDD)
+
+In TDD, development is done based on Unit Tests. Here, you would write a piece of code only to turn the _RED unit tests to GREEN_. Every bit of code is driven by unit tests.
+
+## Behavior Driven Development (BDD)
+
+BDD is a strategy build on top of TDD. In BDD, we focus on the user stories to build a software. 
+
+- Write Unit Tests for a Story
+- Code that story following TDD
+- So here we code to the behavior represented in user story. BDD is TDD with strict focus on stories. Business people, Managers, Developers, Testers - all are looking into same set of stories.
+- Stories are prioritized during sprint, and
+- Each story reflects on the business value it provides. There are good good standard templates for user stories.
+- There are test frameworks which works based on user stories based implementation such as _Cucumber_.
+
