@@ -71,3 +71,30 @@ Unit tests should strictly focus on the unit of functionality you are writing, w
 - The above kinds of tests are called integration tests.
 - You don't need to test private methods. If there is need to test a private method, that indicates need for refactoring code for public interface.
 - You don't need to test code which doesn't have any logic. For example, getters, setters, a method which simply invokes another method.
+
+## Features offered by a Unit Test library
+
+### A. Verification
+
+#### 1. State verification
+Checks if the SUT (System Under Test) has arrived at expected state during test execution.
+
+#### 2. Behavior verification
+Checks if a particular method is invoked during test execution.
+
+### B. Test Double
+
+#### 1. Stub 
+If your unit test relies on another method which has complex logic but eventually returns a true or false, or a specific data, then you can substitute such complex methods with a shortcut function returning that expected return value. This approach in unit testing is called stubbing.
+
+#### 2. Spy 
+Spy is wrapper on an object to primarily serve two purposes. One is to identify how an object is being used, and second is to avoid alteration of a function behavior. When an object is invoked via spy it will monitor the parameters being passed, count of invocation etc.
+
+#### 3. Mock 
+Mock is like a spy + stub where it returns a pre-programmed response like a stub in addition to monitoring the invocation like spy. Mock is used when you want to track the behavior of invocation while providing hard coded response.
+
+#### 4. Fake
+If you need data to be retrieved from DB in order to execute test on a piece of code, then unit test doesn't need to bother about the DB dependency. In this case you could set a hard coded data to avoid executing complex DB data retrieval methods, and also you don't need to worry about DB connection failures. To ease with testing you could provide Fake object (for eg: which may be a list of employees), or an in-memory DB instead of real DB.
+
+#### 5. Dummy
+Dummy data passed to methods.
