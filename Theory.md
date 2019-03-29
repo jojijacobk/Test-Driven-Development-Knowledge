@@ -46,3 +46,13 @@ In TDD, unit tests are driven through 3 stages in the following strategy.
 **REFACTOR:** Then refactor codes to improve quality of codes and and clean them to remove hard coding.
 This ensures to make __clean code that works__. _"Clean code"_ is ensured by _refactor stage_. And, _"that works"_ is ensured by _Red to Green_ stage
 
+## Rules of Unit Tests
+
+- Each test should be independent so that all the tests can be run simultaneously.
+- Any dependencies for a particular test must be implemented using a _mock_ or _stub_. Do not depend on another test result.
+- Each test should represent a unit of behavior.
+- What we expect from a piece of code must be described through unit tests. So essentially we are writing specifications of project through each tests.
+- In a way it is documenting behavior of a project through each test.
+- Here you have to imagine at first what am I expected as result from executing a piece of code before even starting to write any code.
+- As a result you will write only for the necessary scope of project. You don't end up writing any code unnecessarily. This approach is called **YAGNI - You Aren't Gonna Need It**.
+- Unit tests should be fast in execution. By fast we can expect to see a 100 unit tests should be executed within 1 sec
