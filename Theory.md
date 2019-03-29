@@ -46,6 +46,10 @@ In TDD, unit tests are driven through 3 stages in the following strategy.
 **REFACTOR:** Then refactor codes to improve quality of codes and and clean them to remove hard coding.
 This ensures to make __clean code that works__. _"Clean code"_ is ensured by _refactor stage_. And, _"that works"_ is ensured by _Red to Green_ stage
 
+Generally, you would write unit tests on a class's public interface. Hence, that interface would evolve into an _easy to use_ one rather than an _easy to write_ counter intuitive interface that you might develop otherwise.
+
+Every few minutes, unit tests helps to provide a proven code, that has been tested, designed and coded.
+
 ## Rules of Unit Tests
 
 - Each test should be independent so that all the tests can be run simultaneously.
