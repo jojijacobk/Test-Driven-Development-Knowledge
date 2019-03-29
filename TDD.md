@@ -44,5 +44,5 @@ In TDD, unit tests are driven through 3 stages in the following strategy.
 **GREEN:** Write the code just enough to make the above unit test as green. You may do hard coding or at worst do coding just enough with the aim to pass the above test. The prime goal in this step is to write code in smallest possible time not more than a few minutes.
 
 **REFACTOR:** Then refactor codes to improve quality of codes and and clean them to remove hard coding.
-This ensures to make _"clean code that works"_. _"Clean code"_ is ensured by _refactor stage_. And, _"that works"_ is ensured by _Red to Green_ stage
+This ensures to make __clean code that works__. _"Clean code"_ is ensured by _refactor stage_. And, _"that works"_ is ensured by _Red to Green_ stage
 
