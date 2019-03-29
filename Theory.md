@@ -56,3 +56,14 @@ This ensures to make __clean code that works__. _"Clean code"_ is ensured by _re
 - Here you have to imagine at first what am I expected as result from executing a piece of code before even starting to write any code.
 - As a result you will write only for the necessary scope of project. You don't end up writing any code unnecessarily. This approach is called **YAGNI - You Aren't Gonna Need It**.
 - Unit tests should be fast in execution. By fast we can expect to see a 100 unit tests should be executed within 1 sec
+
+## When NOT to depend on Unit Tests ?
+
+Unit tests should strictly focus on the unit of functionality you are writing, which means there should be:
+- No touch on file system
+- No talk with DB
+- No network traversal
+- No configuration changes needed for a particular test
+- The above kinds of tests are called integration tests.
+- You don't need to test private methods. If there is need to test a private method, that indicates need for refactoring code for public interface.
+- You don't need to test code which doesn't have any logic. For example, getters, setters, a method which simply invokes another method.
