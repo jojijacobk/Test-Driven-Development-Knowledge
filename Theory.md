@@ -113,6 +113,23 @@ BDD is a strategy build on top of TDD. In BDD, we focus on the user stories to b
 - Code that story following TDD
 - So here we code to the behavior represented in user story. BDD is TDD with strict focus on stories. Business people, Managers, Developers, Testers - all are looking into same set of stories.
 - Stories are prioritized during sprint, and
-- Each story reflects on the business value it provides. There are good good standard templates for user stories.
+- Each story reflects on the business value it provides. There is standard template for user story as presented below.
 - There are test frameworks which works based on user stories based implementation such as _Cucumber_.
 
+# User Story Template
+
+**Title:** One line summary
+
+**Narrative:** As a *role*, I want this *feature*, So as to get this *benefit*
+
+**Acceptance criteria:** Specify scenarios which stakeholders do care about or a tester need to look into.
+
+# Contrast BDD over TDD
+
+_TDD_ essentially is locking us into the implementation style. But, _BDD_ only cares about the behavior, not your implementation style. Therefore, _BDD_ allows you to refactor a lot without causing troubles or test failures. But, _TDD_ would fail if you change implementation because _TDD_ is executed on each unit of code written.
+
+Take for example your code has a logic to sort numbers in increasing order.
+
+_TDD approach_ : Let's say you implemented sorting using Quick sort algorithm, and your unit tests verify that specific algorithm. If we happened to change the algorithm to Bubble sort for some reason, then your unit test would fail because it is expecting Quick sort algorithm.
+
+_BDD approach_ : Let's say you implemented sorting using Quick sort algorithm, and your BDD is only verifying the outcome, not your specific algorithm. If we happened to change the algorithm to Bubble sort for some reason, then your BDD will not fail because it is expecting only the outcome or behavior to be sorted list of numbers no matter which algorithm is used.
