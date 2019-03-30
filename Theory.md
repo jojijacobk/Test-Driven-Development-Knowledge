@@ -1,4 +1,71 @@
+<!--ts-->
+   * [How to build a software as driven by TDD](#how-to-build-a-software-as-driven-by-tdd)
+      * [Acceptance tests](#acceptance-tests)
+      * [Unit tests](#unit-tests)
+   * [Types of Tests](#types-of-tests)
+      * [Unit Tests](#unit-tests-1)
+      * [Integration Tests](#integration-tests)
+      * [End To End Tests](#end-to-end-tests)
+   * [Unit Tests](#unit-tests-2)
+      * [How To write Unit Tests to drive TDD](#how-to-write-unit-tests-to-drive-tdd)
+      * [Rules of Unit Tests](#rules-of-unit-tests)
+      * [When NOT to depend on Unit Tests ?](#when-not-to-depend-on-unit-tests-)
+      * [Features offered by a Unit Test library](#features-offered-by-a-unit-test-library)
+         * [A. Verification](#a-verification)
+            * [1. State verification](#1-state-verification)
+            * [2. Behavior verification](#2-behavior-verification)
+         * [B. Test Double](#b-test-double)
+            * [1. Stub](#1-stub)
+            * [2. Spy](#2-spy)
+            * [3. Mock](#3-mock)
+            * [4. Fake](#4-fake)
+            * [5. Dummy](#5-dummy)
+   * [Test Based Development Techniques](#test-based-development-techniques)
+      * [Test Driven Development (TDD)](#test-driven-development-tdd)
+      * [Behavior Driven Development (BDD)](#behavior-driven-development-bdd)
+   * [User Story Template](#user-story-template)
+   * [Contrast BDD over TDD](#contrast-bdd-over-tdd)
+   * [Javascript Test Tools](#javascript-test-tools)
+      * [Popular Javascript Unit Test Frameworks](#popular-javascript-unit-test-frameworks)
+      * [Assertion Libraries](#assertion-libraries)
+      * [Stub, Spy, Mock](#stub-spy-mock)
+      * [End to End Tests](#end-to-end-tests-1)
+      * [Code coverage report tool](#code-coverage-report-tool)
+      * [BDD framework](#bdd-framework)
+
+<!-- Added by: jojijaco, at: Sat Mar 30 19:41:53 IST 2019 -->
+
+<!--te-->
+
+# How to build a software as driven by TDD
+
+- Start envisioning the software by writing **acceptance tests**, and 
+- Write **unit tests** with the aim to drive your code into the piece of software as defined by acceptance tests in above step. 
+
+## Acceptance tests
+
+When you develop a software, the first step of implementation should be to define acceptance criteria. When you write acceptance tests, it gives the picture of the following :
+
+- a _clarity_ on the acceptance criteria of _next piece of work_
+- a _realization_ about when you are _done with that feature_, when your code satisfies acceptance tests.
+- _proof that it works_, when it successfully runs acceptance tests.
+- it acts as a _complete regression suite_, when all the acceptance tests of the system run successfully after each new feature development or changes are made to existing feature.
+- acceptance tests _never invoke internal codes_. It _touches only the user interface_ like a third party system invoking a web service, thus ensuring that the new code _works from customer's view point_
+- Acceptance tests are synonymous to _functional tests, customer tests, system tests_
+- _Acceptance tests should be written in terms of application domain and not in the technology domain_. It shouldn't include the implementation details so that you won't tie your technical assumptions before starting to write code. Thus you would think in the user's point of view rather than the implementer's point of view when you start with a new feature.
+- Acceptance tests helps us to _develop new feature from the inputs to the outputs_.
+   You would start working on the new feature/system considering the events coming to the system to trigger certain behaviors. There are objects who act on the boundary level to receive these external events or inputs, and behave accordingly. To respond to the external event boundary objects would need to collaborate with several other objects, which goes by the chain of objects reaching the central domain of technology (may be database or file system lookup etc). And, pass the response via several objects until it reaches the boundary as response object. It is tempting to start development from the central domain in TDD by writing unit tests, but that may lead to eventual integration troubles. So, always start with acceptance tests. 
+
+## Unit tests
+
+Once you write the acceptance tests, the next step is to build the code to pass acceptance tests using TDD. Several iterations of TDD life cycle eventually results in the finished code which passes the acceptance tests.
+When you write unit tests, focus on the behavior of the object under tests to develop new feature and not just the methods. Beginners tend to simply write a unit test for every method they find. The right way is to put a meaningful name to the test method indicating a behavior of the new feature. And, this should be the driving factor for the development of new feature.
+
+The whole process can be illustrated by following diagram:
+![How to build a software as driven by TDD](assets/How to build a software as driven by TDD.png)
+
 # Types of Tests
+
 ## Unit Tests
 Tests a specific unit of functionality such as each methods in a class or plain functions. You focus only on that piece of code without depending on any other objects. Any dependencies smells like it could be redesigned to avoid dependency. If it is an essential dependency it could be replaced with a test double.
 
