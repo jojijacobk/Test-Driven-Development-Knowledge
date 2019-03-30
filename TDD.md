@@ -67,7 +67,7 @@ When you write unit tests, focus on the behavior of the object under tests to de
 When you write the first unit test in TDD, you think of the function required and maps that to an object. That object might need the service of many other objects which are then mocked. Then unit tests for those service objects are created which results in more dependencies and mocks are created for them. This chain of objects end up touching the other end. Thus TDD would drive the design of your software.
 
 The whole process can be illustrated by following diagram:
-<img src="assets/How-to-make-a-software-driven-by-TDD.png" width="600" alt="How-to-make-a-software-driven-by-TDD" title="How-to-make-a-software-driven-by-TDD">
+<img src="assets/How-to-make-a-software-driven-by-TDD.png" width="500" alt="How-to-make-a-software-driven-by-TDD" title="How-to-make-a-software-driven-by-TDD">
 
 If you are building a new project from scratch:
 
@@ -77,7 +77,7 @@ A _walking skeleton_ is the thinnest possible slice of a real functionality that
 - Then you can create your acceptance tests using the infrastructure made for walking skeleton.
 
 Difference between _test first_ vs _test later_ projects can be illustrated as :
-<img src="assets/Test-first-vs-test-later.png" width="400" alt="Test-first-vs-test-later" title="Test-first-vs-test-later">
+<img src="assets/Test-first-vs-test-later.png" width="500" alt="Test-first-vs-test-later" title="Test-first-vs-test-later">
 
 We grow our system starting from the _walking skeleton_. As the code scales up, it occurs naturally to group those objects into packages, and packages into systems. To guide this structuring of code we can use two heuristics :
 
