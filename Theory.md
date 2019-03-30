@@ -1,3 +1,5 @@
+# Table of Contents
+
 <!--ts-->
    * [How to build a software as driven by TDD](#how-to-build-a-software-as-driven-by-tdd)
       * [Acceptance tests](#acceptance-tests)
@@ -33,8 +35,6 @@
       * [Code coverage report tool](#code-coverage-report-tool)
       * [BDD framework](#bdd-framework)
 
-<!-- Added by: jojijaco, at: Sat Mar 30 19:41:53 IST 2019 -->
-
 <!--te-->
 
 # How to build a software as driven by TDD
@@ -54,23 +54,27 @@ When you develop a software, the first step of implementation should be to defin
 - Acceptance tests are synonymous to _functional tests, customer tests, system tests_
 - _Acceptance tests should be written in terms of application domain and not in the technology domain_. It shouldn't include the implementation details so that you won't tie your technical assumptions before starting to write code. Thus you would think in the user's point of view rather than the implementer's point of view when you start with a new feature.
 - Acceptance tests helps us to _develop new feature from the inputs to the outputs_.
-   You would start working on the new feature/system considering the events coming to the system to trigger certain behaviors. There are objects who act on the boundary level to receive these external events or inputs, and behave accordingly. To respond to the external event boundary objects would need to collaborate with several other objects, which goes by the chain of objects reaching the central domain of technology (may be database or file system lookup etc). And, pass the response via several objects until it reaches the boundary as response object. It is tempting to start development from the central domain in TDD by writing unit tests, but that may lead to eventual integration troubles. So, always start with acceptance tests. 
-
+   You would start working on the new feature/system considering the events coming to the system to trigger certain behaviors. There are objects who act on the boundary level to receive these external events or inputs, and behave accordingly. To respond to the external event boundary objects would need to collaborate with several other objects, which goes by the chain of objects reaching the central domain of technology (may be database or file system lookup etc). And, pass the response via several objects until it reaches the boundary as response object. It is tempting to start development from the central domain in TDD by writing unit tests, but that may lead to eventual integration troubles. So, always start with acceptance tests.
+ 
 ## Unit tests
 
 Once you write the acceptance tests, the next step is to build the code to pass acceptance tests using TDD. Several iterations of TDD life cycle eventually results in the finished code which passes the acceptance tests.
 When you write unit tests, focus on the behavior of the object under tests to develop new feature and not just the methods. Beginners tend to simply write a unit test for every method they find. The right way is to put a meaningful name to the test method indicating a behavior of the new feature. And, this should be the driving factor for the development of new feature.
 
 The whole process can be illustrated by following diagram:
-![How to build a software as driven by TDD](assets/How to build a software as driven by TDD.png)
+<img src="assets/How-to-make-a-software-driven-by-TDD.png" width="600" alt="How-to-make-a-software-driven-by-TDD" title="How-to-make-a-software-driven-by-TDD">
 
-# Types of Tests
+# Levels of Tests
 
 ## Unit Tests
 Tests a specific unit of functionality such as each methods in a class or plain functions. You focus only on that piece of code without depending on any other objects. Any dependencies smells like it could be redesigned to avoid dependency. If it is an essential dependency it could be replaced with a test double.
 
+When you write unit tests, it enforces high cohesion and less coupling for the objects you make. Because coupling makes it difficult to write unit tests, and we have to resolve the dependencies involved in the coupling through test doubles (mock).
+
 ## Integration Tests
 Though Unit Tests makes sure that each objects do work fine to meet their requirements, it may end in chaos while interacting with outside objects. Integration Tests rule out this issue by testing a specific interaction flow between an object and another object such as our piece of code interacting with DB, Network, File System etc or even interactions between two different class objects.
+
+Integration tests helps to prove that our objects works well with other objects or system for which we don't have control.
 
 For example on Integration Tests, let's assume how Integration Tests of API would look like:
 
@@ -85,11 +89,13 @@ Here, the complete workflow of an API request is tested through integration test
 
 If a code that has some business logic prior to interacting with DB, the business logic units are tested using Unit Tests, and the interaction with DB is tested using Integration Tests.
 
-## End To End Tests
+## Acceptance Tests
 
-Also termed like E2E Tests, Acceptance Tests, Functional Tests, UI Tests
+Also termed like End to End (E2E) Tests, Functional Tests, UI Tests
  
 Tests on the use case scenarios. In this phase you test application entirely like how a user would interact with a website through a browser. This involves DOM parsing and UI tests.
+
+_Acceptance tests generally proves that the whole system works._
 
 For example on E2E, let's assume how E2E of mail application would look like:
 
@@ -103,6 +109,51 @@ For example on E2E, let's assume how E2E of mail application would look like:
 8. etc
 9. Log out of mail account
 
+The impact of different levels of tests and feedback it gathers can be understood from the picture below:
+<img src="assets/Feedback-from-tests.png" width="600" alt="Feedback-from-tests" title="Feedback-from-tests">
+
+# How TDD helps to achieve High Cohesion & Less Coupling among objects
+Object oriented design deals with message passing between objects. Objects send messages to other objects, and they respond with some message. So essentially OOP is a collaboration between web of objects. A maintainable object oriented system is the one which focus on clear message passing instead of leaking any internal information of objects.
+
+Take for example the following code where it is unnecessary for the Train object to know the intrinsic details of Carriage object.
+
+**Example of bad message passing**
+
+```java
+public class Train {
+    private final List<Carriage> carriages[...]
+    private int percentReservedBarrier = 70;
+ 
+    public void reserveSeats(ReservationRequest request) {
+        for (Carriage carriage : carriages) {
+            if (carriage.getSeats().getPercentReserved() < percentReservedBarrier) {
+                request.reserveSeatsIn(carriage);
+                return;
+            }
+        }
+        request.cannotFindSeats();
+    }
+}
+```
+A better communication between objects would look like below code where Train object simply asked the Carriage object to know if there is seats available. The name of method is also refined.
+
+This indicates high cohesion as the most suitable object to hold the behavior to check seat availability is Carriage itself.
+As intrinsic details of Carriage object is moved out of Train object, it becomes less coupled, test friendly and maintainable.
+
+**Example of good message passing**
+
+```java
+public void reserveSeats(ReservationRequest request) {
+    for (Carriage carriage : carriages) {
+        if (carriage.hasSeatsAvailableWithin(percentReservedBarrier)) {
+            request.reserveSeatsIn(carriage);
+            return;
+        }
+    }
+    request.cannotFindSeats();
+}
+```
+
 # Unit Tests
 ## How To write Unit Tests to drive TDD
 
@@ -115,9 +166,25 @@ In TDD, unit tests are driven through 3 stages in the following strategy.
 **REFACTOR:** Then refactor codes to improve quality of codes and and clean them to remove hard coding.
 This ensures to make __clean code that works__. _"Clean code"_ is ensured by _refactor stage_. And, _"that works"_ is ensured by _Red to Green_ stage
 
-Generally, you would write unit tests on a class's public interface. Hence, that interface would evolve into an _easy to use_ one rather than an _easy to write_ counter intuitive interface that you might develop otherwise.
+Generally, you would write unit tests on a class's public interface. Hence, that interface would evolve into an _easy to use_ one rather than an _easy to write_ and counter intuitive interface that you might develop otherwise.
 
+We test only the target object in a unit test, where any other dependencies are simply mocked. 
+
+The essential structure of a test looks like :
+
+- Create any required _mock objects_
+- Create any required _real objects_ including the _target object_
+- Specify how do you _expect_ the mock object to be invoked by the target object
+- _Trigger_ the call to test the target object
+- _Assert the resulting_ values are valid and the _expected calls_ have been made.
+
+<img src="assets/Testing-an-object-with-help-of-mock-objects.png" width="600" alt="Testing-an-object-with-help-of-mock-objects" title="Testing-an-object-with-help-of-mock-objects">
+
+Golden rule of TDD is:
+_Never write new functionality without a failing test._
 Every few minutes, unit tests helps to provide a proven code, that has been tested, designed and coded.
+
+
 
 ## Rules of Unit Tests
 
@@ -202,6 +269,8 @@ Take for example your code has a logic to sort numbers in increasing order.
 _TDD approach_ : Let's say you implemented sorting using Quick sort algorithm, and your unit tests verify that specific algorithm. If we happened to change the algorithm to Bubble sort for some reason, then your unit test would fail because it is expecting Quick sort algorithm.
 
 _BDD approach_ : Let's say you implemented sorting using Quick sort algorithm, and your BDD is only verifying the outcome, not your specific algorithm. If we happened to change the algorithm to Bubble sort for some reason, then your BDD will not fail because it is expecting only the outcome or behavior to be sorted list of numbers no matter which algorithm is used.
+
+---
 
 # Javascript Test Tools
 
