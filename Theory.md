@@ -120,7 +120,7 @@ BDD is a strategy build on top of TDD. In BDD, we focus on the user stories to b
 
 **Title:** One line summary
 
-**Narrative:** As a *role*, I want this *feature*, So as to get this *benefit*
+**Narrative:** As a *role*, I want this *feature*, To get this *benefit*
 
 **Acceptance criteria:** Specify scenarios which stakeholders do care about or a tester need to look into.
 
