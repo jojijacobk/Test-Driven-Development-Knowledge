@@ -18,8 +18,10 @@ Here, the complete workflow of an API request is tested through integration test
 
 If a code that has some business logic prior to interacting with DB, the business logic units are tested using Unit Tests, and the interaction with DB is tested using Integration Tests.
 
-## End To End Tests (E2E Tests - Acceptance Tests, Functional Tests, UI Tests)
+## End To End Tests
 
+Also termed like E2E Tests, Acceptance Tests, Functional Tests, UI Tests
+ 
 Tests on the use case scenarios. In this phase you test application entirely like how a user would interact with a website through a browser. This involves DOM parsing and UI tests.
 
 For example on E2E, let's assume how E2E of mail application would look like:
@@ -161,7 +163,9 @@ A **test framework** primarily serves two purposes : it would have a **test libr
 - Jasmine
 - Jest
 
-## E2E - run from user's point of view (aka UI Tests on Browser)
+## End to End Tests
+
+They are run from user's point of view (aka UI Tests on Browser)
 
 - Protractor
 - PhantomJS
