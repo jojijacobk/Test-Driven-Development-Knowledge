@@ -180,6 +180,8 @@ Selenium Webdriver would be used by these libraries behind the scene to automate
 
 - Cucumber
 
+---
+
 Some frameworks are full fledged tools which executes everything starting from UI tests, 
 Coverage, Performance, Snapshot testing, globals support, assertions - mock - spies support etc. For example, _Jest_ is such as full fledged framework used by Facebook. _Jest_ is based on _Jasmine_. 
 
