@@ -133,3 +133,54 @@ Take for example your code has a logic to sort numbers in increasing order.
 _TDD approach_ : Let's say you implemented sorting using Quick sort algorithm, and your unit tests verify that specific algorithm. If we happened to change the algorithm to Bubble sort for some reason, then your unit test would fail because it is expecting Quick sort algorithm.
 
 _BDD approach_ : Let's say you implemented sorting using Quick sort algorithm, and your BDD is only verifying the outcome, not your specific algorithm. If we happened to change the algorithm to Bubble sort for some reason, then your BDD will not fail because it is expecting only the outcome or behavior to be sorted list of numbers no matter which algorithm is used.
+
+# Javascript Test Tools
+
+A **test framework** primarily serves two purposes : it would have a **test library** to _write tests_ and a **test runner** to _execute tests_.
+
+## Popular Javascript Unit Test Frameworks
+
+- Mocha
+- Jasmine
+- Qunit (from JQuery team)
+- Jest (from Facebook)
+- Karma
+
+## Assertion Libraries
+
+- Chai
+- Should.js
+- Assert.js
+- Jasmine
+- Jest
+
+## Stub, Spy, Mock
+
+- Sinon.js
+- Testdouble.js
+- Jasmine
+- Jest
+
+## E2E - run from user's point of view (aka UI Tests on Browser)
+
+- Protractor
+- PhantomJS
+- Casper.js
+- Nightwatch
+- Chromium project
+
+Selenium Webdriver would be used by these libraries behind the scene to automate browser tests.
+
+## Code coverage report tool
+
+- Istanbul
+- Blanket
+
+## BDD framework
+
+- Cucumber
+
+Some frameworks are full fledged tools which executes everything starting from UI tests, 
+Coverage, Performance, Snapshot testing, globals support, assertions - mock - spies support etc. For example, _Jest_ is such as full fledged framework used by Facebook. _Jest_ is based on _Jasmine_. 
+
+_Smoke Test_ is a build verification testing which just verifies that core functionality of the new build is working fine, so that it can be taken for further level of testing. If smoke test fails, it means the build has to be simply rejected. If smoke test passes, it continues to next level of detailed testing.
