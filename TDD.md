@@ -1,16 +1,13 @@
 # Table of Contents
 
 <!--ts-->
-   * [Table of Contents](#table-of-contents)
    * [How to build a software as driven by TDD](#how-to-build-a-software-as-driven-by-tdd)
       * [Acceptance tests](#acceptance-tests)
       * [Unit tests](#unit-tests)
-   * [Best Practices](#best-practices)
    * [Levels of Tests](#levels-of-tests)
+      * [Acceptance Tests](#acceptance-tests-1)
       * [Unit Tests](#unit-tests-1)
       * [Integration Tests](#integration-tests)
-      * [Acceptance Tests](#acceptance-tests-1)
-   * [How TDD helps to achieve High Cohesion &amp; Less Coupling among objects](#how-tdd-helps-to-achieve-high-cohesion--less-coupling-among-objects)
    * [Unit Tests](#unit-tests-2)
       * [How To write Unit Tests to drive TDD](#how-to-write-unit-tests-to-drive-tdd)
       * [Rules of Unit Tests](#rules-of-unit-tests)
@@ -30,6 +27,8 @@
       * [Behavior Driven Development (BDD)](#behavior-driven-development-bdd)
    * [User Story Template](#user-story-template)
    * [Contrast BDD over TDD](#contrast-bdd-over-tdd)
+   * [How TDD helps to achieve High Cohesion &amp; Less Coupling among objects](#how-tdd-helps-to-achieve-high-cohesion--less-coupling-among-objects)
+   * [Best Practices](#best-practices)
    * [Javascript Test Tools](#javascript-test-tools)
       * [Popular Javascript Unit Test Frameworks](#popular-javascript-unit-test-frameworks)
       * [Assertion Libraries](#assertion-libraries)
@@ -37,6 +36,7 @@
       * [End to End Tests](#end-to-end-tests)
       * [Code coverage report tool](#code-coverage-report-tool)
       * [BDD framework](#bdd-framework)
+
 
 <!--te-->
 
@@ -76,7 +76,7 @@ A _walking skeleton_ is the thinnest possible slice of a real functionality that
 (eg: of a walking skeleton for a database backed website would be a flat plain webpage showing some fields from db)
 - Then you can create your acceptance tests using the infrastructure made for walking skeleton.
 
-Difference between test first vs test later projects can be illustrated as :
+Difference between _test first_ vs _test later_ projects can be illustrated as :
 <img src="assets/Test-first-vs-test-later.png" width="400" alt="Test-first-vs-test-later" title="Test-first-vs-test-later">
 
 We grow our system starting from the _walking skeleton_. As the code scales up, it occurs naturally to group those objects into packages, and packages into systems. To guide this structuring of code we can use two heuristics :
@@ -95,18 +95,27 @@ Consider the complexity of a mechanical clock simplified with very simple interf
 
 If you expose too much of detail from an object via it's public API, clients would end up doing some of the works intended to be done from the object itself. That is why you must have a clean high level abstraction.
 
-# Best Practices
-
-- Having one test case per method is usually a bad thing!
-- What you want is: One test case per behavior
-- You want to have a list of “If you do this, it should react like that” sentences in executable form.
-- Private methods don’t have any observable behavior. You test them implicitly through public API of the class.
-- They are an implementation detail and it is not important if you have 0 or 100 private methods! For the test cases this should make no difference at all.
-- Avoid constructors to have logic, condition clauses, initialization etc. Also, make sure that all the dependencies of an object is passed to it in its constructor itself. If all of these are injected to constructor, it highly improves testability.
-- The business domain and technology domain are separate concerns and shouldn't be mixed up. We don't want technical concepts to leak into the business domain. There should an easy to replace interface between business domain and technology domain to bridge the gap between them.
-
-
 # Levels of Tests
+
+## Acceptance Tests
+
+Also termed like End to End (E2E) Tests, Functional Tests, UI Tests
+ 
+Tests on the use case scenarios. In this phase you test application entirely like how a user would interact with a website through a browser. This involves DOM parsing and UI tests.
+
+_Acceptance tests generally proves that the whole system works._
+
+For example on E2E, let's assume how E2E of mail application would look like:
+
+1. Start a webserver to launch your mail application
+2. Launch a browser
+3. Log into a mail account
+4. Open Inbox
+5. Open a particular mail
+6. Compose a reply to that mail
+7. Send mail
+8. etc
+9. Log out of mail account
 
 ## Unit Tests
 Tests a specific unit of functionality such as each methods in a class or plain functions. You focus only on that piece of code without depending on any other objects. Any dependencies smells like it could be redesigned to avoid dependency. If it is an essential dependency it could be replaced with a test double.
@@ -131,70 +140,8 @@ Here, the complete workflow of an API request is tested through integration test
 
 If a code that has some business logic prior to interacting with DB, the business logic units are tested using Unit Tests, and the interaction with DB is tested using Integration Tests.
 
-## Acceptance Tests
-
-Also termed like End to End (E2E) Tests, Functional Tests, UI Tests
- 
-Tests on the use case scenarios. In this phase you test application entirely like how a user would interact with a website through a browser. This involves DOM parsing and UI tests.
-
-_Acceptance tests generally proves that the whole system works._
-
-For example on E2E, let's assume how E2E of mail application would look like:
-
-1. Start a webserver to launch your mail application
-2. Launch a browser
-3. Log into a mail account
-4. Open Inbox
-5. Open a particular mail
-6. Compose a reply to that mail
-7. Send mail
-8. etc
-9. Log out of mail account
-
 The impact of different levels of tests and feedback it gathers can be understood from the picture below:
 <img src="assets/Feedback-from-tests.png" width="400" alt="Feedback-from-tests" title="Feedback-from-tests">
-
-# How TDD helps to achieve High Cohesion & Less Coupling among objects
-Object oriented design deals with message passing between objects. Objects send messages to other objects, and they respond with some message. So essentially OOP is a collaboration between web of objects. A maintainable object oriented system is the one which focus on clear message passing instead of leaking any internal information of objects.
-
-Take for example the following code where it is unnecessary for the Train object to know the intrinsic details of Carriage object.
-
-**Example of bad message passing**
-
-```java
-public class Train {
-    private final List<Carriage> carriages[...]
-    private int percentReservedBarrier = 70;
- 
-    public void reserveSeats(ReservationRequest request) {
-        for (Carriage carriage : carriages) {
-            if (carriage.getSeats().getPercentReserved() < percentReservedBarrier) {
-                request.reserveSeatsIn(carriage);
-                return;
-            }
-        }
-        request.cannotFindSeats();
-    }
-}
-```
-A better communication between objects would look like below code where Train object simply asked the Carriage object to know if there is seats available. The name of method is also refined.
-
-This indicates high cohesion as the most suitable object to hold the behavior to check seat availability is Carriage itself.
-As intrinsic details of Carriage object is moved out of Train object, it becomes less coupled, test friendly and maintainable.
-
-**Example of good message passing**
-
-```java
-public void reserveSeats(ReservationRequest request) {
-    for (Carriage carriage : carriages) {
-        if (carriage.hasSeatsAvailableWithin(percentReservedBarrier)) {
-            request.reserveSeatsIn(carriage);
-            return;
-        }
-    }
-    request.cannotFindSeats();
-}
-```
 
 # Unit Tests
 ## How To write Unit Tests to drive TDD
@@ -225,8 +172,6 @@ The essential structure of a test looks like :
 Golden rule of TDD is:
 _Never write new functionality without a failing test._
 Every few minutes, unit tests helps to provide a proven code, that has been tested, designed and coded.
-
-
 
 ## Rules of Unit Tests
 
@@ -312,6 +257,58 @@ _TDD approach_ : Let's say you implemented sorting using Quick sort algorithm, a
 
 _BDD approach_ : Let's say you implemented sorting using Quick sort algorithm, and your BDD is only verifying the outcome, not your specific algorithm. If we happened to change the algorithm to Bubble sort for some reason, then your BDD will not fail because it is expecting only the outcome or behavior to be sorted list of numbers no matter which algorithm is used.
 
+# How TDD helps to achieve High Cohesion & Less Coupling among objects
+Object oriented design deals with message passing between objects. Objects send messages to other objects, and they respond with some message. So essentially OOP is a collaboration between web of objects. A maintainable object oriented system is the one which focus on clear message passing instead of leaking any internal information of objects.
+
+Take for example the following code where it is unnecessary for the Train object to know the intrinsic details of Carriage object.
+
+**Example of bad message passing**
+
+```java
+public class Train {
+    private final List<Carriage> carriages[...]
+    private int percentReservedBarrier = 70;
+ 
+    public void reserveSeats(ReservationRequest request) {
+        for (Carriage carriage : carriages) {
+            if (carriage.getSeats().getPercentReserved() < percentReservedBarrier) {
+                request.reserveSeatsIn(carriage);
+                return;
+            }
+        }
+        request.cannotFindSeats();
+    }
+}
+```
+A better communication between objects would look like below code where Train object simply asked the Carriage object to know if there is seats available. The name of method is also refined.
+
+This indicates high cohesion as the most suitable object to hold the behavior to check seat availability is Carriage itself.
+As intrinsic details of Carriage object is moved out of Train object, it becomes less coupled, test friendly and maintainable.
+
+**Example of good message passing**
+
+```java
+public void reserveSeats(ReservationRequest request) {
+    for (Carriage carriage : carriages) {
+        if (carriage.hasSeatsAvailableWithin(percentReservedBarrier)) {
+            request.reserveSeatsIn(carriage);
+            return;
+        }
+    }
+    request.cannotFindSeats();
+}
+```
+
+# Best Practices
+
+- Having one test case per method is usually a bad thing!
+- What you want is: One test case per behavior
+- You want to have a list of “If you do this, it should react like that” sentences in executable form.
+- Private methods don’t have any observable behavior. You test them implicitly through public API of the class.
+- They are an implementation detail and it is not important if you have 0 or 100 private methods! For the test cases this should make no difference at all.
+- Avoid constructors to have logic, condition clauses, initialization etc. Also, make sure that all the dependencies of an object is passed to it in its constructor itself. If all of these are injected to constructor, it highly improves testability.
+- The business domain and technology domain are separate concerns and shouldn't be mixed up. We don't want technical concepts to leak into the business domain. There should an easy to replace interface between business domain and technology domain to bridge the gap between them.
+- 
 ---
 
 # Javascript Test Tools
