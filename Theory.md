@@ -1,13 +1,15 @@
 # Table of Contents
 
 <!--ts-->
+   * [Table of Contents](#table-of-contents)
    * [How to build a software as driven by TDD](#how-to-build-a-software-as-driven-by-tdd)
       * [Acceptance tests](#acceptance-tests)
       * [Unit tests](#unit-tests)
-   * [Types of Tests](#types-of-tests)
+   * [Levels of Tests](#levels-of-tests)
       * [Unit Tests](#unit-tests-1)
       * [Integration Tests](#integration-tests)
-      * [End To End Tests](#end-to-end-tests)
+      * [Acceptance Tests](#acceptance-tests-1)
+   * [How TDD helps to achieve High Cohesion &amp; Less Coupling among objects](#how-tdd-helps-to-achieve-high-cohesion--less-coupling-among-objects)
    * [Unit Tests](#unit-tests-2)
       * [How To write Unit Tests to drive TDD](#how-to-write-unit-tests-to-drive-tdd)
       * [Rules of Unit Tests](#rules-of-unit-tests)
@@ -31,9 +33,11 @@
       * [Popular Javascript Unit Test Frameworks](#popular-javascript-unit-test-frameworks)
       * [Assertion Libraries](#assertion-libraries)
       * [Stub, Spy, Mock](#stub-spy-mock)
-      * [End to End Tests](#end-to-end-tests-1)
+      * [End to End Tests](#end-to-end-tests)
       * [Code coverage report tool](#code-coverage-report-tool)
       * [BDD framework](#bdd-framework)
+
+<!-- Added by: jojijaco, at: Sat Mar 30 21:33:44 IST 2019 -->
 
 <!--te-->
 
