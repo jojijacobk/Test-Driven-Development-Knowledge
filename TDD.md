@@ -1,9 +1,11 @@
 # Table of Contents
 
 <!--ts-->
+   * [Table of Contents](#table-of-contents)
    * [How to build a software as driven by TDD](#how-to-build-a-software-as-driven-by-tdd)
       * [Acceptance tests](#acceptance-tests)
       * [Unit tests](#unit-tests)
+   * [Best Practices](#best-practices)
    * [Levels of Tests](#levels-of-tests)
       * [Unit Tests](#unit-tests-1)
       * [Integration Tests](#integration-tests)
@@ -35,8 +37,6 @@
       * [End to End Tests](#end-to-end-tests)
       * [Code coverage report tool](#code-coverage-report-tool)
       * [BDD framework](#bdd-framework)
-
-<!-- Added by: jojijaco, at: Sat Mar 30 22:05:35 IST 2019 -->
 
 <!--te-->
 
@@ -79,7 +79,7 @@ A _walking skeleton_ is the thinnest possible slice of a real functionality that
 Difference between test first vs test later projects can be illustrated as :
 <img src="assets/Test-first-vs-test-later.png" width="400" alt="Test-first-vs-test-later" title="Test-first-vs-test-later">
 
-We grow our system starting from the walking skeleton. As the code scales up, it occurs naturally to group those objects into packages, packages into systems. To guide this structuring of code we can use two heuristics :
+We grow our system starting from the _walking skeleton_. As the code scales up, it occurs naturally to group those objects into packages, and packages into systems. To guide this structuring of code we can use two heuristics :
 
 **Separation of concerns**
 
@@ -95,9 +95,15 @@ Consider the complexity of a mechanical clock simplified with very simple interf
 
 If you expose too much of detail from an object via it's public API, clients would end up doing some of the works intended to be done from the object itself. That is why you must have a clean high level abstraction.
 
-When you write a piece of object oriented code, you will have several object peers working together. A good rule of thumb is to make ready all the necessary dependencies of an object in its constructor itself. If an object is context independent (pass context into object), that makes it easy to adapt to change in environment. 
+# Best Practices
 
-Another important point is that the business domain and technology domain are separate concerns and shouldn't be mixed up. We don't want technical concepts to leak into the business domain, so we write interfaces on business domain exposing the necessary external connector points from business domain to technology domain such as database, filesystem etc - this is called ports.
+- Having one test case per method is usually a bad thing!
+- What you want is: One test case per behavior
+- You want to have a list of “If you do this, it should react like that” sentences in executable form.
+- Private methods don’t have any observable behavior. You test them implicitly through public API of the class.
+- They are an implementation detail and it is not important if you have 0 or 100 private methods! For the test cases this should make no difference at all.
+- Avoid constructors to have logic, condition clauses, initialization etc. Also, make sure that all the dependencies of an object is passed to it in its constructor itself. If all of these are injected to constructor, it highly improves testability.
+- The business domain and technology domain are separate concerns and shouldn't be mixed up. We don't want technical concepts to leak into the business domain. There should an easy to replace interface between business domain and technology domain to bridge the gap between them.
 
 
 # Levels of Tests
