@@ -42,9 +42,9 @@
 
 # How to build a software as driven by TDD
 
-- Start developing a software by defining the **acceptance tests** of that software.
+- Start developing a software by first defining the **acceptance tests** of that software.
   - Wite _stories_ to capture the requirement of a software. You may classify the _stories_ into _epics_ to group together similar themed stories.
-  - Write _acceptance criteria_ to substantiate the story by describing what a stakeholder/tester/user expects to see once this piece of code is written
+  - Each story comes with an _acceptance criteria_ to substantiate the story by describing what a stakeholder/tester/user expects to see once this piece of code is written
   - Convert this acceptance criteria into _acceptance tests_ to drive the development of our story till it's finishing point.
 - Write **unit tests** with the aim to drive the development of your code. 
 - _Write code_ enough to turn the unit tests green, and then perform _refactoring_ until the code turns into a good shape. 
