@@ -308,7 +308,7 @@ public void reserveSeats(ReservationRequest request) {
 - They are an implementation detail and it is not important if you have 0 or 100 private methods! For the test cases this should make no difference at all.
 - Avoid constructors to have logic, condition clauses, initialization etc. Also, make sure that all the dependencies of an object is passed to it in its constructor itself. If all of these are injected to constructor, it highly improves testability.
 - The business domain and technology domain are separate concerns and shouldn't be mixed up. We don't want technical concepts to leak into the business domain. There should an easy to replace interface between business domain and technology domain to bridge the gap between them.
-- 
+
 ---
 
 # Javascript Test Tools
