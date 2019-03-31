@@ -46,7 +46,8 @@
   - Wite _stories_ to capture the requirement of a software. You may classify the _stories_ into _epics_ to group together similar themed stories.
   - Write _acceptance criteria_ to substantiate the story by describing what a stakeholder/tester/user expects to see once this piece of code is written
   - Convert this acceptance criteria into _acceptance tests_ to drive the development of our story till it's finishing point.
-- Write **unit tests** with the aim to build your code into piece of software that caters to the _acceptance tests_.
+- Write **unit tests** with the aim to drive the development of your code. 
+- _Write code_ enough to turn the unit tests green, and then perform _refactoring_ until the code turns into a good shape. 
 
 ## Acceptance tests
 
