@@ -1,4 +1,4 @@
-Github page for this repository is available at [https://jojijacobk.github.io/Test-Driven-Development](https://jojijacobk.github.io/Test-Driven-Development)
+Github page for this repository is available at [https://jojijacobk.github.io/test-driven-development](https://jojijacobk.github.io/test-driven-development)
 
 # Table of Contents
 
