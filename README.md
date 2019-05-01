@@ -1,5 +1,3 @@
-Github page for this repository is available at [https://jojijacobk.github.io/test-driven-development](https://jojijacobk.github.io/test-driven-development)
-
 # Table of Contents
 
 <!--ts-->
@@ -371,3 +369,8 @@ Some frameworks are full fledged tools which executes everything starting from U
 Coverage, Performance, Snapshot testing, globals support, assertions - mock - spies support etc. For example, _Jest_ is such as full fledged framework used by Facebook. _Jest_ is based on _Jasmine_. 
 
 _Smoke Test_ is a build verification testing which just verifies that core functionality of the new build is working fine, so that it can be taken for further level of testing. If smoke test fails, it means the build has to be simply rejected. If smoke test passes, it continues to next level of detailed testing.
+
+---
+Github Repo: https://github.com/jojijacobk/test-driven-development
+
+Github Page: [https://jojijacobk.github.io/test-driven-development](https://jojijacobk.github.io/test-driven-development)
