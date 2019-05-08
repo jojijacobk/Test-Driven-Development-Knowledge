@@ -332,6 +332,7 @@ Though a test framework provides suite to describe and run tests, it doesn't pro
 ## Assertion Libraries
 
 - Chai
+  - provides 3 different possibilities for assertion: _should_, _expect_, _assert_
 - Should.js
 - Assert.js
 - Jasmine
