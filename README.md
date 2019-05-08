@@ -317,7 +317,7 @@ public void reserveSeats(ReservationRequest request) {
 
 # Javascript Test Tools
 
-A **test framework** primarily serves two purposes : it would have a **test library** to _write tests_ and a **test runner** to _execute tests_.
+A **test framework** primarily serves two purposes : it would have a **test library** to _describe and write tests_ and a **test runner** to _execute tests_.
 
 ## Popular Javascript Unit Test Frameworks
 
@@ -326,6 +326,8 @@ A **test framework** primarily serves two purposes : it would have a **test libr
 - Qunit (from JQuery team)
 - Jest (from Facebook)
 - Karma
+
+Though a test framework provides suite to describe and run tests, it doesn't provide ability to test values. For, that we need assertion libraries.
 
 ## Assertion Libraries
 
