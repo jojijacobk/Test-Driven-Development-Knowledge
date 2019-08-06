@@ -1,44 +1,41 @@
-# Table of Contents
+   * [How to build a software as driven by TDD](README.md#how-to-build-a-software-as-driven-by-tdd)
+      * [Summary](README.md#summary)
+      * [Write acceptance tests](README.md#write-acceptance-tests)
+      * [Write unit tests](README.md#write-unit-tests)
+      * [Apply TDD](README.md#apply-tdd)
+   * [Different Levels of Tests](README.md#different-levels-of-tests)
+      * [Acceptance Tests](README.md#acceptance-tests)
+      * [Unit Tests](README.md#unit-tests)
+      * [Integration Tests](README.md#integration-tests)
+   * [Unit Tests Detailed](README.md#unit-tests-detailed)
+      * [How To write Unit Tests to drive TDD](README.md#how-to-write-unit-tests-to-drive-tdd)
+      * [Rules of Unit Tests](README.md#rules-of-unit-tests)
+      * [When NOT to depend on Unit Tests ?](README.md#when-not-to-depend-on-unit-tests-)
+      * [Features offered by a Unit Test library](README.md#features-offered-by-a-unit-test-library)
+         * [A. Verification](README.md#a-verification)
+            * [1. State verification](README.md#1-state-verification)
+            * [2. Behavior verification](README.md#2-behavior-verification)
+         * [B. Test Double](README.md#b-test-double)
+            * [1. Stub](README.md#1-stub)
+            * [2. Spy](README.md#2-spy)
+            * [3. Mock](README.md#3-mock)
+            * [4. Fake](README.md#4-fake)
+            * [5. Dummy](README.md#5-dummy)
+   * [Test Based Development Techniques](README.md#test-based-development-techniques)
+      * [Test Driven Development (TDD)](README.md#test-driven-development-tdd)
+      * [Behavior Driven Development (BDD)](README.md#behavior-driven-development-bdd)
+   * [User Story Template](README.md#user-story-template)
+   * [Contrast BDD over TDD](README.md#contrast-bdd-over-tdd)
+   * [How TDD helps to achieve High Cohesion &amp; Less Coupling among objects](README.md#how-tdd-helps-to-achieve-high-cohesion--less-coupling-among-objects)
+   * [Best Practices](README.md#best-practices)
+   * [Javascript Test Tools](README.md#javascript-test-tools)
+      * [Popular Javascript Unit Test Frameworks](README.md#popular-javascript-unit-test-frameworks)
+      * [Assertion Libraries](README.md#assertion-libraries)
+      * [Stub, Spy, Mock](README.md#stub-spy-mock)
+      * [End to End Tests](README.md#end-to-end-tests)
+      * [Code coverage report tool](README.md#code-coverage-report-tool)
+      * [BDD framework](README.md#bdd-framework)
 
-<!--ts-->
-   * [How to build a software as driven by TDD](#how-to-build-a-software-as-driven-by-tdd)
-      * [Acceptance tests](#acceptance-tests)
-      * [Unit tests](#unit-tests)
-   * [Levels of Tests](#levels-of-tests)
-      * [Acceptance Tests](#acceptance-tests-1)
-      * [Unit Tests](#unit-tests-1)
-      * [Integration Tests](#integration-tests)
-   * [Unit Tests](#unit-tests-2)
-      * [How To write Unit Tests to drive TDD](#how-to-write-unit-tests-to-drive-tdd)
-      * [Rules of Unit Tests](#rules-of-unit-tests)
-      * [When NOT to depend on Unit Tests ?](#when-not-to-depend-on-unit-tests-)
-      * [Features offered by a Unit Test library](#features-offered-by-a-unit-test-library)
-         * [A. Verification](#a-verification)
-            * [1. State verification](#1-state-verification)
-            * [2. Behavior verification](#2-behavior-verification)
-         * [B. Test Double](#b-test-double)
-            * [1. Stub](#1-stub)
-            * [2. Spy](#2-spy)
-            * [3. Mock](#3-mock)
-            * [4. Fake](#4-fake)
-            * [5. Dummy](#5-dummy)
-   * [Test Based Development Techniques](#test-based-development-techniques)
-      * [Test Driven Development (TDD)](#test-driven-development-tdd)
-      * [Behavior Driven Development (BDD)](#behavior-driven-development-bdd)
-   * [User Story Template](#user-story-template)
-   * [Contrast BDD over TDD](#contrast-bdd-over-tdd)
-   * [How TDD helps to achieve High Cohesion &amp; Less Coupling among objects](#how-tdd-helps-to-achieve-high-cohesion--less-coupling-among-objects)
-   * [Best Practices](#best-practices)
-   * [Javascript Test Tools](#javascript-test-tools)
-      * [Popular Javascript Unit Test Frameworks](#popular-javascript-unit-test-frameworks)
-      * [Assertion Libraries](#assertion-libraries)
-      * [Stub, Spy, Mock](#stub-spy-mock)
-      * [End to End Tests](#end-to-end-tests)
-      * [Code coverage report tool](#code-coverage-report-tool)
-      * [BDD framework](#bdd-framework)
-
-
-<!--te-->
 
 # How to build a software as driven by TDD
 
@@ -102,7 +99,7 @@ Consider the complexity of a mechanical clock simplified with very simple interf
 
 If you expose too much of detail from an object via it's public API, clients would end up doing some of the works intended to be done from the object itself. That is why you must have a clean high level abstraction.
 
-# Levels of Tests
+# Different Levels of Tests
 
 ## Acceptance Tests
 
