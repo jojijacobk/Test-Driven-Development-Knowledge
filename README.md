@@ -50,7 +50,7 @@
 - **Write unit tests:** Write unit test for your next piece of code before you write actual code. 
 - **Apply TDD:** _Write code_ enough to turn the unit tests green, and then perform _refactoring_ until the code turns into a good shape. 
 
-## Acceptance tests
+## Write acceptance tests
 
 When you develop a software, the first step of implementation should be to define acceptance criteria. When you write acceptance tests, it gives the picture of the following :
 
@@ -64,7 +64,7 @@ When you develop a software, the first step of implementation should be to defin
 - Acceptance tests helps us to _develop new feature from the inputs to the outputs_.
    You would start working on the new feature/system considering the events coming to the system to trigger certain behaviors. There are objects who act on the boundary level to receive these external events or inputs, and behave accordingly. To respond to the external event boundary objects would need to collaborate with several other objects, which goes by the chain of objects reaching the central domain of technology (may be database or file system lookup etc). And, pass the response via several objects until it reaches the boundary as response object. _It is tempting to start development from the central domain in TDD by writing unit tests, but that may lead to eventual integration troubles. So, always start with acceptance tests_.
  
-## Unit tests
+## Write unit tests
 
 Once you write the acceptance tests, the next step is to build the code to pass acceptance tests using TDD. Several iterations of TDD life cycle eventually results in the finished code which passes the acceptance tests.
 When you write unit tests, focus on the behavior of the object under tests to develop new feature and not just the methods. Beginners tend to simply write a unit test for every method they find. The right way is to put a meaningful name to the test method indicating a behavior of the new feature. And, this should be the driving factor for the development of new feature.
@@ -73,6 +73,8 @@ When you write the first unit test in TDD, you think of the function required an
 
 The whole process can be illustrated by following diagram:
 <img src="assets/How-to-make-a-software-driven-by-TDD.png" width="500" alt="How-to-make-a-software-driven-by-TDD" title="How-to-make-a-software-driven-by-TDD">
+
+## Apply TDD
 
 If you are building a new project from scratch:
 
@@ -148,7 +150,8 @@ If a code that has some business logic prior to interacting with DB, the busines
 The impact of different levels of tests and feedback it gathers can be understood from the picture below:
 <img src="assets/Feedback-from-tests.png" width="400" alt="Feedback-from-tests" title="Feedback-from-tests">
 
-# Unit Tests
+# Unit Tests Detailed
+
 ## How To write Unit Tests to drive TDD
 
 In TDD, unit tests are driven through 3 stages in the following strategy.
